@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Form</title>
+  <!-- Load Bootstrap stylesheet -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+</head>
+<body>
+    <h1>Bootstrap booking form</h1>
+    <div class="well">
+      <p>Fill out the form and click the submit button when complete...</p>
+    </div>
+    <form class="container" id="bootstrap-form">
+      <!-- this is the main form-->
+      <div class="row">
+        <div class="col-md-6">
+
+          <div class="well" id="userInfo">
+            <h2>User:</h2>
+              <div class="form-group">
+                <div class="col">
+                  <div class="row-sm">
+                    <label for="username" class="col-sm-auto">Username</label>
+                    <input type="text" name="formInput" class="form-control col-sm" id="username" placeholder="Enter username...">
+                  </div>
+                  <div class="row-sm">
+                    <label for="first-name" class="col-sm-auto">First Name</label>
+                    <input type="text" name="formInput"class="form-control col-sm" id="first-name" placeholder="Enter first name...">
+                  </div>
+                  <div class="row-sm">
+                    <label for="last-name" class="col-sm-auto">Last Name</label>
+                    <input type="text" name="formInput" class="form-control col-sm" id="last-name" placeholder="Enter last name...">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="well" id="contactInfo">
+              <h2>Contact Information:</h2>
+              <div class="form-group">
+                <div class="col">
+                  <div class="row-sm">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                      <input type="number" name="formInput" class="form-control col-sm" id="phoneNumber" placeholder="Enter phone #...">  
+                    </div>
+                  </div>
+                  <div class="row-sm">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-print"></i></span>
+                      <input type="text" name="formInput" class="form-control col-sm" id="faxNumber" placeholder="Enter fax #...">
+                    </div>
+                  </div>
+                  <div class="row-sm">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                      <input type="email" name="formInput" class="form-control col-sm" id="emailAddress" placeholder="Enter email address..." required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="well" id="scheduleInfo">
+              <h2>Schedule Info:</h2>
+              <div class="form-group col">
+                <div class="col">
+                  <div class="input-group">
+                    <label for="numAdults">Adults:</label>
+                    <select class="form-control" name="formInput" id="numAdults" onchange="calculateCost()">
+                      <option value="0">Select Quantity</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                
+                <div class="row">
+                  <div class="col-sm-6">
+                      <label for="checkInDate">Check-In:</label>
+                      <div class="input-group">
+                        <input type="date" name="formInput" class="form-control col-sm" id="checkInDate">
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <label for="checkOutDate">Check-Out:</label>
+                      <div class="input-group">
+                        <input type="date" name="formInput" class="form-control col-sm" id="checkOutDate" onchange="calculateCost()">
+                      </div>
+                  </div>
+                </div>
+
+                <div><h2></h2></div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="numDays">Days:</label>
+                    <input readonly class="display" id="numDays" value="" placeholder="Displays days...">
+                    </div>
+                  <div class="col-md-6">
+                    <label for="cost">Cost:</label>
+                    <input readonly class="display" id="cost" value="" onchange="calculateCost()" placeholder="Total Cost:">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="well" id="otherInfo">
+              <h2>Other:</h2>
+                <div class="form-group col">
+                  <div class="row-sm">
+                    <label for="message">Additional Message:</label>
+                  </div>
+                  <div class="row-sm">
+                    <div class="input-group">
+                      <input type="text" class="form-control col-sm message" name="form-input" id="message" placeholder="Enter message here...">
+                    </div>
+                  </div>
+                  <div><h2></h2></div>
+                  <div class="row-sm">
+                    <label for="range">Range:</label>
+                  </div>
+                  <div class="row-sm">
+                    <input type="range" min="0" max="100" value="50" id="slider" oninput="this.nextElementSibling.value = this.value">
+                    <output id="rangeValue">50</output>
+                  </div>
+                  <div><h2></h2></div>
+
+                  <div class="row-sm">
+                    <p><strong>Priority:</strong></p>
+                    <input type="radio" name="priority" value="low">
+                    <label for="low">low</label>
+                    <input type="radio" name="priority" value="med">
+                    <label for="med">med</label>
+                    <input type="radio" name="priority" value="high">
+                    <label for="high">high</label>
+                  </div>
+
+                  <div><h2></h2></div>
+                  <div class="row-sm">
+                    <div class="col-sm">
+                      <button type="reset" id="reset" class="btn btn-default">Reset</button>
+                    </div>
+                    <div class="col-sm">
+                      <button type="button" value="Submit" onclick="submitForm()" id="submit" class="btn btn-default">Submit</button>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+    <form>
+    <div id="snackbar"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <script src="index.js"></script>
+</body>
